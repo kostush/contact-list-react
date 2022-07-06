@@ -53,15 +53,13 @@ function App() {
     })
     setUsers(newUsers);
     setSaveMode(true);
-    
-    
-    //saveUsersInStorage(newUsers);
+    saveUsersInStorage(newUsers);
   }
+  
   const editEventHandler =(user) =>{
     console.log("edit user",user);
     setFormUser(user);
     setSaveMode(false);
-
   }
 
   const deleteEventHandler =(deletedUser) =>{
