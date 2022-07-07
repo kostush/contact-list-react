@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 
 const Form = (props) =>{console.log('props in form',props);
     const saveHandler =(event)=>{ 
@@ -14,7 +14,6 @@ const Form = (props) =>{console.log('props in form',props);
     }
 
     const validateForm = (user)=>{
-       console.log(user);
         let isNameValid  = validateName(user.userName);
         let isEmailValid = validateEmail(user.email);
         let isPhoneValid = validatePhone(user.phone);
@@ -35,10 +34,11 @@ const Form = (props) =>{console.log('props in form',props);
             /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
           );
     }
+
     const validatePhone =(phone)=>{
         return   phone.match(/\d/g);
     }
-    console.log(props);
+
     return ( 
         <form className="form-control modal">
                 <input type="text" placeholder=" Name" name='userName' value ={props.formUser.userName} onChange={props.handleUserInput} />
