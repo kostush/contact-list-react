@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Form from './components/Form/Form';
 import Table from './components/Table/Table';
 import {defaultFormUser, defaultUsers} from './defaultUsers';
+import store from './store/store';
 
 function App() {
   const STORAG_KEY_NAME ='users';
@@ -14,7 +15,7 @@ function App() {
       }
        return usersFromStorage;
   };  
-
+  let newUsers = retrieveUsersFromStorage();
   const [formUser, setFormUser] = useState(defaultFormUser);
   const [users, setUsers] = useState(retrieveUsersFromStorage());
   const [saveMode, setSaveMode] = useState(true);
@@ -58,14 +59,20 @@ function App() {
   const saveUsersInStorage =(users)=>{
     localStorage.setItem(STORAG_KEY_NAME, JSON.stringify(users));
   }
-  
+    const storeHandler = store.subscribe(()=>{
+        console.log("store changed", store.getState());
+        setUsers(store.getState());
+
+    })
   const saveHandler =(event) =>{
-    let newUsers = [...users];
+   // let newUsers = [...users];
     let user = {...formUser, id: users.length + 1, date : createDate() };
     setFormUser(user);
-    newUsers.push(user);
-    setUsers(newUsers);
-    saveUsersInStorage(newUsers);
+   // newUsers.push(user);
+   // setUsers(newUsers);
+
+
+    //saveUsersInStorage(newUsers);
   }
 
   const handleUserInput =(event) =>{

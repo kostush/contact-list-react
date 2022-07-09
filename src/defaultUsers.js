@@ -1,6 +1,6 @@
 const defaultFormUser = {
     id:1,
-    userName: "",
+    name: "",
     phone: "",
     email: "",
     date: "",
@@ -8,14 +8,14 @@ const defaultFormUser = {
 const defaultUsers =[
     {
         id:1,
-        userName: "first",
+        name: "first",
         phone: "1111",
         email: "one@one.com",
         date: "2022-07-05, 15:22",
     },
     {
         id:2,
-        userName: "second",
+        name: "second",
         phone: "2222",
         email: "second@second.com",
         date: "2022-07-05, 15:22",

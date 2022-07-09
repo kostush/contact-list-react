@@ -1,19 +1,24 @@
 import React, { useState } from 'react';
+import store from '../../store/store';
+import * as usersActions from '../../userSlice/usersActions';
 
-const Form = (props) =>{console.log('props in form',props);
+
+const Form = (props) =>{
     const saveHandler =(event)=>{ 
         if (validateForm(props.formUser)){
-            props.saveHandler();
+            //props.saveHandler();
+            store.dispatch(usersActions.addUser(props.formUser))
         }
     }
 
     const updateHandler = (event) =>{
         if (validateForm(props.formUser)){
-            props.updateHandler();
+            //props.updateHandler();
+            store.dispatch(usersActions.editUser(props.formUser))
         }
     }
 
-    const validateForm = (user)=>{
+    const validateForm = (user)=>{return true;
         let isNameValid  = validateName(user.userName);
         let isEmailValid = validateEmail(user.email);
         let isPhoneValid = validatePhone(user.phone);
@@ -41,7 +46,7 @@ const Form = (props) =>{console.log('props in form',props);
 
     return ( 
         <form className="form-control modal">
-                <input type="text" placeholder=" Name" name='userName' value ={props.formUser.userName} onChange={props.handleUserInput} />
+                <input type="text" placeholder=" Name" name='name' value ={props.formUser.name} onChange={props.handleUserInput} />
                 <input type="text" placeholder=" Phone" name = 'phone' value={props.formUser.phone} onChange={props.handleUserInput}/>
                 <input type="email" placeholder=" Email" name = 'email'  value ={props.formUser.email} onChange={props.handleUserInput}/>
                 <button className = 'b2' id='editButton' hidden = {props.saveMode} type="button" onClick={updateHandler}>Update</button>
