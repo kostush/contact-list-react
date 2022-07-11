@@ -65,14 +65,8 @@ function App() {
 
     })
   const saveHandler =(event) =>{
-   // let newUsers = [...users];
     let user = {...formUser, id: users.length + 1, date : createDate() };
     setFormUser(user);
-   // newUsers.push(user);
-   // setUsers(newUsers);
-
-
-    //saveUsersInStorage(newUsers);
   }
 
   const handleUserInput =(event) =>{
